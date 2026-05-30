@@ -6,8 +6,8 @@
     <title>منصة الإمام محمد الباقر (ع)</title>
     <style>
         :root {
-            --primary-color: #005a5b; /* الأخضر الحوزوي الفخم */
-            --accent-color: #d4af37;  /* الذهبي الملكي */
+            --primary-color: #005a5b; 
+            --accent-color: #d4af37;  
             --bg-color: #f4f7f6;
             --text-color: #2c3e50;
         }
@@ -15,10 +15,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
@@ -29,13 +25,14 @@
             border-radius: 28px;
             box-shadow: 0 15px 40px rgba(0, 90, 91, 0.08);
             text-align: center;
-            max-width: 480px;
+            max-width: 450px;
             width: 100%;
+            margin: 20px auto; /* هذا التعديل يخلي الكارت بالنص تماماً ويمنع العصر */
             border: 1px solid rgba(0, 90, 91, 0.08);
             overflow: hidden;
+            box-sizing: border-box;
         }
         
-        /* أيقونة التطبيق الفخمة في الأعلى */
         .app-logo {
             width: 110px;
             height: 110px;
@@ -70,7 +67,6 @@
             padding: 0 10px;
         }
         
-        /* قسم معرض الصور على طريقة Google Play (شريط تمرير أفقي) */
         .gallery-title {
             font-size: 16px;
             color: var(--primary-color);
@@ -87,24 +83,94 @@
             padding: 5px 5px 15px 5px;
             margin-bottom: 25px;
             scroll-snap-type: x mandatory;
-            scrollbar-width: none; /* إخفاء شريط التمرير للكمبيوتر */
+            scrollbar-width: none; 
         }
         .google-play-slider::-webkit-scrollbar {
-            display: none; /* إخفاء شريط التمرير لجوجل كروم وسفاري */
+            display: none; 
         }
         .google-play-slider img {
-            flex: 0 0 160px; /* عرض مناسب جداً لظهور الصور مثل المتجر */
+            flex: 0 0 140px; 
             height: auto;
             border-radius: 14px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.08);
             scroll-snap-align: start;
-            transition: transform 0.2s;
             border: 1px solid #edf1f2;
         }
-        .google-play-slider img:hover {
-            transform: scale(1.03);
-        }
 
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 16px 20px;
+            font-size: 17px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 90, 91, 0.25);
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            border-top: 1px solid #edf1f2;
+            padding-top: 20px;
+            margin-top: 10px;
+        }
+        .company-logo {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .footer-text {
+            font-size: 11.5px;
+            color: #8fa0a6;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://i.ibb.co/LXDsMjwk/file-00000000af1071f4986e269169701d05.png" alt="أيقونة تطبيق الإمام الباقر" class="app-logo">
+
+        <h1>منصة الإمام محمد الباقر (ع)</h1>
+        <div class="badge">المنصة الحوزوية والعبادية الشاملة</div>
+        
+        <p class="description">
+            منصة حوزوية وأكاديمية شاملة لطلاب العلوم الدينية، وحقيبة عبادية متكاملة للزائرين. تضم بوابات للدروس والامتحانات، القرآن الكريم كاملاً، مواقيت الأذان الشرعية، الأدعية والزيارات، بوصلة القبلة، والتسبيحة الإلكترونية، بواجهة احترافية وسلسة.
+        </p>
+
+        <div class="gallery-title">لقطات من داخل التطبيق:</div>
+        <div class="google-play-slider">
+            <img src="https://i.ibb.co/xtv5WNGy/Screenshot-20260530-180505.jpg" alt="لقطة 1">
+            <img src="https://i.ibb.co/hR9SPZW2/Screenshot-20260530-180510.jpg" alt="لقطة 2">
+            <img src="https://i.ibb.co/WvdsM0Jy/Screenshot-20260530-180514.jpg" alt="لقطة 3">
+            <img src="https://i.ibb.co/cSrK00xL/Screenshot-20260530-180523.jpg" alt="لقطة 4">
+            <img src="https://i.ibb.co/BVzSNPSK/Screenshot-20260530-180525.jpg" alt="لقطة 5">
+            <img src="https://i.ibb.co/Kp3yJ3M6/Screenshot-20260530-180528.jpg" alt="لقطة 6">
+        </div>
+        
+        <a href="https://download1590.mediafire.com/w26t0282hffgbdvh0308kmzoo2m/bdvh0308kmzoo2m/app-release.apk" class="download-btn">
+            <span>تنزيل التطبيق المباشر (APK)</span>
+        </a>
+        
+        <div class="footer-section">
+            <img src="https://i.ibb.co/JWVQXt7Q/received-818024010932946.jpg" alt="NEXAURON Logo" class="company-logo">
+            <div class="footer-text">جميع الحقوق محفوظة لشركة NEXAURON © 2026</div>
+        </div>
+    </div>
+
+</body>
+</html>
         /* زر التحميل */
         .download-btn {
             display: flex;
