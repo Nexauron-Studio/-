@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة الإمام محمد الباقر (ع)</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
     <style>
         :root {
             --primary-color: #005a5b; 
@@ -70,7 +74,6 @@
             padding: 0 10px;
         }
         
-        /* شريط الصور المصغرة */
         .gallery-title {
             font-size: 16px;
             color: var(--primary-color);
@@ -108,7 +111,6 @@
             transform: scale(0.95);
         }
 
-        /* قسم تفاصيل التحديث الجديد */
         .update-section {
             background-color: rgba(0, 90, 91, 0.03);
             border: 1px dashed rgba(0, 90, 91, 0.2);
@@ -159,14 +161,33 @@
             border-radius: 16px;
             transition: all 0.3s ease;
             box-shadow: 0 6px 20px rgba(0, 90, 91, 0.25);
-            margin-bottom: 20px;
+            margin-bottom: 8px;
+            cursor: pointer;
         }
         .download-btn:hover {
             background-color: #004445;
             transform: translateY(-2px);
         }
+
+        /* تنسيق عداد التحميلات */
+        .download-counter {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+        .download-counter span {
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 15px;
+        }
         
-        /* قسم الإحصائيات (عداد الزوار) */
         .stats-section {
             background-color: #f8fcfb;
             border: 1px dashed rgba(0, 90, 91, 0.2);
@@ -207,7 +228,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* نظام تكبير الصور */
         .modal {
             display: none; 
             position: fixed; 
@@ -268,19 +288,25 @@
         
         <div class="update-section">
             <div class="update-header">
-                <div class="update-title">✨ مميزات التحديث الجديد (V1.0.4A)</div>
-                <div class="update-date"> 2026/6/1</div>
+                <div class="update-title">✨ مميزات التحديث الجديد (V1.0.5A)</div>
+                <div class="update-date">📅 2026/6/2</div>
             </div>
             <ul class="update-list">
-                <li>1-حل مشكلة تسجيل الدخول.</li>
-                <li>2-تغيير اسماء التحديثات بأسماء الائمه الاثني عشر عليهم السلام.</li>
-                <li>3-حل مشكلة منتدى الرجال ومنتدى النساء كانت عند ارسال رسالة تظهر ايقونه المستخدم/ة بشكل حرف الان تظهر ايقونه المستخدم/ة حسب الصورة يلي اختارها.</li>
+                <li>تمت إضافة كتاب روائع القصص وكتاب كيف تفهم القرآن للسيد محمد رضا الشيرازي.</li>
+                <li>تم حل بعض المشاكل التقنية.</li>
+                <li>تمت إضافة خلفيات دينية (العدد 21 صورة).</li>
+                <li>تم تحديث واجهة تسجيل الدخول الرجالي والنسائي بطريقة أرتب.</li>
+                <li>فريق NEXAURON يستجيب لطلباتكم بسرعة.</li>
             </ul>
         </div>
         
-        <a href="https://github.com/Nexauron-Studio/app-imam-mohamed-al-baqer/releases/download/1.0.4/app-release.apk" class="download-btn">
-            <span>تنزيل التطبيق المباشر (APK) - إصدار 1.0.4A</span>
+        <a id="downloadButton" href="https://github.com/Nexauron-Studio/app-imam-mohamed-al-baqer/releases/download/1.0.5A/app-release.apk" target="_blank" class="download-btn">
+            <span>تنزيل التطبيق المباشر (APK) - إصدار 1.0.5A</span>
         </a>
+
+        <div class="download-counter">
+            تم تحميل التطبيق <span id="realtimeCounter">0</span> مرة
+        </div>
 
         <div class="stats-section">
             <div class="stats-text">إجمالي زوار الصفحة</div>
@@ -299,6 +325,7 @@
     </div>
 
     <script>
+        // تكبير الصور
         function openModal(imageSrc) {
             document.getElementById('imageModal').style.display = 'block';
             document.getElementById('fullImage').src = imageSrc;
@@ -306,7 +333,46 @@
         function closeModal() {
             document.getElementById('imageModal').style.display = 'none';
         }
+
+        // ==========================================
+        // 🚀 إعدادات Firebase والعداد
+        // ==========================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyCw-SIXEOgi5BRa0mtp23csoOxcuLN0ZUQ",
+            authDomain: "baqir-app.firebaseapp.com",
+            databaseURL: "https://baqir-app-default-rtdb.firebaseio.com",
+            projectId: "baqir-app",
+            storageBucket: "baqir-app.firebasestorage.app",
+            messagingSenderId: "14213168028",
+            appId: "1:14213168028:web:8e6cf458ed6239eab2e659",
+            measurementId: "G-DT65TN33R0"
+        };
+
+        // تهيئة فايربيس
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const database = firebase.database();
+        const counterRef = database.ref('appStats/totalDownloads');
+
+        // جلب الرقم من القاعدة وعرضه
+        counterRef.on('value', (snapshot) => {
+            const count = snapshot.val() || 0;
+            document.getElementById('realtimeCounter').innerText = count;
+        });
+
+        // دالة منع السبام وزيادة العداد
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            // غيرنا اسم المفتاح حتى الي محمل النسخة القديمة يكدر ينحسبله التحميل الجديد
+            const hasDownloaded = localStorage.getItem('baqir_app_downloaded_v1_0_5A');
+            
+            if (!hasDownloaded) {
+                // إذا ما محمل قبل، زيد العداد
+                counterRef.set(firebase.database.ServerValue.increment(1));
+                // احفظ بجهازه إنه حمل حتى ما ينحسب مرة ثانية
+                localStorage.setItem('baqir_app_downloaded_v1_0_5A', 'true');
+            }
+        });
     </script>
 </body>
 </html>
-
