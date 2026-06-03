@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة الإمام محمد الباقر (ع)</title>
     
+    <!-- مكاتب Firebase (النسخة الثامنة للسهولة بالربط المباشر) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
@@ -288,22 +289,24 @@
         
         <div class="update-section">
             <div class="update-header">
-                <div class="update-title">✨ مميزات التحديث الجديد (V1.0.5A)</div>
-                <div class="update-date">📅 2026/6/2</div>
+                <div class="update-title">✨ مميزات التحديث الجديد (V1.0.6A)</div>
+                <div class="update-date">📅 2026/6/3</div>
             </div>
             <ul class="update-list">
-                <li>تمت إضافة كتاب روائع القصص وكتاب كيف تفهم القرآن للسيد محمد رضا الشيرازي.</li>
-                <li>تم حل بعض المشاكل التقنية.</li>
-                <li>تمت إضافة خلفيات دينية (العدد 21 صورة).</li>
-                <li>تم تحديث واجهة تسجيل الدخول الرجالي والنسائي بطريقة أرتب.</li>
-                <li>فريق NEXAURON يستجيب لطلباتكم بسرعة.</li>
+                <li>تحديث شكل واجهة قسم مناقشات الرجالي والنسائي.</li>
+                <li>تمت إضافة 461 دعاء البيت الإسلامي كامل (كل شيء وليس فقط الأدعية).</li>
+                <li>إصلاحات أمنية هامة.</li>
+                <li>تحسين واجهة عرض الإعلانات داخل التطبيق.</li>
+                <li>هل لديكم أي إضافات؟ اترك رسالتك داخل المنصة في قسم الدعم المباشر.</li>
             </ul>
         </div>
         
-        <a id="downloadButton" href="https://github.com/Nexauron-Studio/app-imam-mohamed-al-baqer/releases/download/1.0.5A/app-release.apk" target="_blank" class="download-btn">
-            <span>تنزيل التطبيق المباشر (APK) - إصدار 1.0.5A</span>
+        <!-- زر التحميل بالرابط الجديد للإصدار 1.0.6A -->
+        <a id="downloadButton"https://github.com/Nexauron-Studio/app-imam-mohamed-al-baqer/releases/download/1.0.6A/Imam.Muhammad.al-Baqir.apk">
+            <span>تنزيل التطبيق المباشر (APK) - إصدار 1.0.6A</span>
         </a>
 
+        <!-- العداد الذي يعرض الرقم من فايربيس -->
         <div class="download-counter">
             تم تحميل التطبيق <span id="realtimeCounter">0</span> مرة
         </div>
@@ -363,14 +366,18 @@
 
         // دالة منع السبام وزيادة العداد
         document.getElementById('downloadButton').addEventListener('click', function() {
-            // غيرنا اسم المفتاح حتى الي محمل النسخة القديمة يكدر ينحسبله التحميل الجديد
-            const hasDownloaded = localStorage.getItem('baqir_app_downloaded_v1_0_5A');
+            // تحديث المفتاح للإصدار الجديد لحساب التحميلات من جديد
+            const hasDownloaded = localStorage.getItem('baqir_app_downloaded_v1_0_6A');
             
             if (!hasDownloaded) {
-                // إذا ما محمل قبل، زيد العداد
-                counterRef.set(firebase.database.ServerValue.increment(1));
-                // احفظ بجهازه إنه حمل حتى ما ينحسب مرة ثانية
-                localStorage.setItem('baqir_app_downloaded_v1_0_5A', 'true');
+                // زيادة العداد داخل قاعدة البيانات مع طباعة الخطأ إذا وجد في الـ Console
+                counterRef.set(firebase.database.ServerValue.increment(1))
+                .then(() => {
+                    localStorage.setItem('baqir_app_downloaded_v1_0_6A', 'true');
+                })
+                .catch((error) => {
+                    console.error("Firebase Rule Error: تأكد من تعديل الـ Rules داخل الفايربيس وتفعيل الوصول العام لها.", error);
+                });
             }
         });
     </script>
