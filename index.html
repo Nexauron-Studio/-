@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة الإمام محمد الباقر (ع)</title>
     
-    <!-- استيراد خط شركة احترافي من Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- مكاتب Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <style>
-        /* تم تثبيت ألوان الوضع الليلي بشكل كامل كما طلبت */
         :root {
             --bg-premium: #061312;
             --card-bg: #0b1f1e;
@@ -58,7 +55,6 @@
             overflow: hidden;
         }
 
-        /* شريط ذهبي فخم في أعلى الكارت يرمز للهوية الإسلامية للمنصة */
         .container::before {
             content: '';
             position: absolute;
@@ -69,7 +65,6 @@
             background: linear-gradient(90deg, var(--accent-gold), #f3ddb3, var(--accent-gold));
         }
 
-        /* الصورة الأولى: لوغو التطبيق الفعلي */
         .app-logo {
             width: 120px;
             height: 120px;
@@ -131,7 +126,6 @@
             border-radius: 2px;
         }
 
-        /* معرض لقطات الشاشة */
         .google-play-slider {
             display: flex;
             overflow-x: auto;
@@ -159,7 +153,6 @@
             transform: translateY(-4px);
         }
 
-        /* تنسيق قسم التحديثات كشغل الشركات الكبرى */
         .update-section {
             background-color: var(--update-item-bg);
             border: 1px solid var(--card-border);
@@ -210,7 +203,6 @@
             font-size: 11px;
         }
 
-        /* صندوق الدعاء والصلاة على محمد وآل محمد المميز */
         .dua-box {
             background-color: var(--dua-bg);
             border: 1px solid var(--dua-border);
@@ -224,7 +216,6 @@
             text-align: center;
         }
 
-        /* زر التحميل بالإصدار الجديد 1.0.7A */
         .download-btn {
             display: flex;
             align-items: center;
@@ -284,7 +275,6 @@
             font-weight: 700;
         }
 
-        /* تذييل الصفحة يحمل براند الاستوديو الخاص بك */
         .footer-section {
             display: flex;
             flex-direction: column;
@@ -308,7 +298,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* المودال لعرض الصور بملء الشاشة */
         .modal {
             display: none; 
             position: fixed; 
@@ -347,9 +336,6 @@
 <body>
 
     <div class="container">
-        <!-- تم إزالة زر التبديل بناءً على طلبك وتثبيت الوضع الليلي -->
-
-        <!-- أيقونة التطبيق الجديدة -->
         <img src="https://i.ibb.co/twPZVZ4F/file-00000000af1071f4986e269169701d05.png" alt="أيقونة تطبيق الإمام الباقر" class="app-logo">
 
         <h1>منصة الإمام محمد الباقر (ع)</h1>
@@ -359,7 +345,6 @@
             منصة حوزوية وأكاديمية شاملة لطلاب العلوم الدينية، وحقيبة عبادية متكاملة للزائرين. تضم بوابات للدروس والامتحانات، القرآن الكريم كاملاً، مواقيت الأذان الشرعية، الأدعية والزيارات، بوصلة القبلة، والتسبيحة الإلكترونية، بواجهة احترافية وسلسة.
         </p>
 
-        <!-- معرض لقطات الشاشة (الـ 6 صور من داخل التطبيق) -->
         <div class="gallery-title">لقطات شاشة من داخل المنصة</div>
         <div class="google-play-slider">
             <img src="https://i.ibb.co/23vs3syV/Screenshot-20260604-052616.jpg" onclick="openModal(this.src)" alt="لقطة 1">
@@ -370,7 +355,6 @@
             <img src="https://i.ibb.co/TM88g7sb/Screenshot-20260604-052520.jpg" onclick="openModal(this.src)" alt="لقطة 6">
         </div>
         
-        <!-- قسم التحديثات -->
         <div class="update-section">
             <div class="update-header">
                 <div class="update-title">✨ الإضافات والمميزات الجديدة</div>
@@ -383,36 +367,31 @@
             </ul>
         </div>
 
-        <!-- صندوق الدعاء -->
         <div class="dua-box">
             🍃 نسألكم خالص الدعاء والزيارة.. <br>
             وأن لا تنسونا بالصلاة على محمد وآل محمد الطيبين الطاهرين.
         </div>
         
-        <!-- زر التحميل -->
-        <a id="downloadButton" href="https://github.com/Nexauron-Studio/app-imam-mohamed-al-baqer/releases/download/1.0.7A/1.0.7A.apk" target="_blank" class="download-btn">
+        <!-- التعديل تم هنا: تمت إزالة الرابط من HTML لعدم كشفه لـ Android Intent -->
+        <a id="downloadButton" href="javascript:void(0);" class="download-btn">
             <span>تنزيل التحديث المباشر (APK) - V1.0.7A</span>
         </a>
 
-        <!-- عداد التحميلات من Firebase -->
         <div class="download-counter">
             إجمالي عمليات التحميل الموثقة: <span id="realtimeCounter">0</span>
         </div>
 
-        <!-- عداد الزوار -->
         <div class="stats-section">
             <div class="stats-text">إجمالي زوار منصة التحميل</div>
             <img src="https://api.visitorbadge.io/api/visitors?path=albaqir-app-downloads-2026&countColor=%230b4845&labelColor=%23c5a059&label=VISITS" alt="عداد الزوار">
         </div>
         
-        <!-- لوغو NEXAURON بالفوتر -->
         <div class="footer-section">
             <img src="https://i.ibb.co/60YTxFBb/received-818024010932946.jpg" alt="NEXAURON Logo" class="company-logo">
             <div class="footer-text">صنع وتطوير بواسطة NEXAURON © 2026</div>
         </div>
     </div>
 
-    <!-- نافذة عرض الصور بكامل حجمها -->
     <div id="imageModal" class="modal" onclick="closeModal()">
         <span class="close-btn">&times;</span>
         <img class="modal-content" id="fullImage">
@@ -427,9 +406,6 @@
             document.getElementById('imageModal').style.display = 'none';
         }
 
-        // ==========================================
-        // 🚀 إعدادات العداد وقاعدة بيانات Firebase
-        // ==========================================
         const firebaseConfig = {
             apiKey: "AIzaSyCw-SIXEOgi5BRa0mtp23csoOxcuLN0ZUQ",
             authDomain: "baqir-app.firebaseapp.com",
@@ -452,17 +428,25 @@
             document.getElementById('realtimeCounter').innerText = count.toLocaleString();
         });
 
-        document.getElementById('downloadButton').addEventListener('click', function() {
+        // تنفيذ عملية التحميل برمجياً هنا
+        document.getElementById('downloadButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const apkUrl = "https://github.com/Nexauron-Studio/app-imam-mohamed-al-baqer/releases/download/1.0.7A/1.0.7A.apk";
             const hasDownloaded = localStorage.getItem('baqir_app_downloaded_v1_0_7A');
             
             if (!hasDownloaded) {
                 counterRef.set(firebase.database.ServerValue.increment(1))
                 .then(() => {
                     localStorage.setItem('baqir_app_downloaded_v1_0_7A', 'true');
+                    window.location.assign(apkUrl); // توجيه برمجي
                 })
                 .catch((error) => {
                     console.error("Firebase Error:", error);
+                    window.location.assign(apkUrl); // توجيه برمجي في حال الفشل
                 });
+            } else {
+                window.location.assign(apkUrl); // توجيه برمجي
             }
         });
     </script>
