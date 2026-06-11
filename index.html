@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة الإمام محمد الباقر (ع)</title>
+    <title>منصة زاد المتقين</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -336,10 +336,10 @@
 <body>
 
     <div class="container">
-        <img src="https://i.ibb.co/twPZVZ4F/file-00000000af1071f4986e269169701d05.png" alt="أيقونة تطبيق الإمام الباقر" class="app-logo">
+        <img src="https://i.ibb.co/1GzFxcsn/Chat-GPT-Image-Jun-11-2026-04-06-33-AM.png" alt="أيقونة منصة زاد المتقين" class="app-logo">
 
-        <h1>منصة الإمام محمد الباقر (ع)</h1>
-        <div class="badge">الإصدار الأحدث V1.1.0A</div>
+        <h1>منصة زاد المتقين</h1>
+        <div class="badge">الإصدار الأحدث V2.0.0H</div>
         
         <p class="description">
             منصة حوزوية وأكاديمية شاملة لطلاب العلوم الدينية، وحقيبة عبادية متكاملة للزائرين. تضم بوابات للدروس والامتحانات، القرآن الكريم كاملاً، مواقيت الأذان الشرعية، الأدعية والزيارات، بوصلة القبلة، والتسبيحة الإلكترونية، بواجهة احترافية وسلسة.
@@ -347,12 +347,11 @@
 
         <div class="gallery-title">لقطات شاشة من داخل المنصة</div>
         <div class="google-play-slider">
-            <img src="https://i.ibb.co/23vs3syV/Screenshot-20260604-052616.jpg" onclick="openModal(this.src)" alt="لقطة 1">
-            <img src="https://i.ibb.co/1G70NPPF/Screenshot-20260604-052608.jpg" onclick="openModal(this.src)" alt="لقطة 2">
-            <img src="https://i.ibb.co/WN1NJ3Dn/Screenshot-20260604-052601.jpg" onclick="openModal(this.src)" alt="لقطة 3">
-            <img src="https://i.ibb.co/8LWX3hvk/Screenshot-20260604-052550.jpg" onclick="openModal(this.src)" alt="لقطة 4">
-            <img src="https://i.ibb.co/Jjf93r4B/Screenshot-20260604-052537.jpg" onclick="openModal(this.src)" alt="لقطة 5">
-            <img src="https://i.ibb.co/TM88g7sb/Screenshot-20260604-052520.jpg" onclick="openModal(this.src)" alt="لقطة 6">
+            <img src="https://i.ibb.co/Z1T7rtdV/Screenshot-20260610-181224.jpg" onclick="openModal(this.src)" alt="لقطة 1">
+            <img src="https://i.ibb.co/q3K2cJPy/Screenshot-20260611-040216.jpg" onclick="openModal(this.src)" alt="لقطة 2">
+            <img src="https://i.ibb.co/xtF5PvvB/Screenshot-20260611-040226.jpg" onclick="openModal(this.src)" alt="لقطة 3">
+            <img src="https://i.ibb.co/pjNTWt05/Screenshot-20260610-180743.jpg" onclick="openModal(this.src)" alt="لقطة 4">
+            <img src="https://i.ibb.co/84dmf5Xn/Screenshot-20260610-180754.jpg" onclick="openModal(this.src)" alt="لقطة 5">
         </div>
         
         <div class="update-section">
@@ -367,12 +366,11 @@
 
         <div class="dua-box">
             🍃 نسألكم خالص الدعاء والزيارة.. <br>
-            وأن لا تنسونا بالصلاة على محمد وآل محمد الطيبين الطاهرين.
+            أن لا تنسونا بالصلاة على محمد وآل محمد الطيبين الطاهرين.
         </div>
         
-        <!-- التعديل تم هنا: تمت إزالة الرابط من HTML لعدم كشفه لـ Android Intent -->
         <a id="downloadButton" href="javascript:void(0);" class="download-btn">
-            <span>تنزيل التحديث المباشر (APK) - V1.1.0A</span>
+            <span>تنزيل التحديث المباشر (APK) - V2.0.0H</span>
         </a>
 
         <div class="download-counter">
@@ -426,25 +424,24 @@
             document.getElementById('realtimeCounter').innerText = count.toLocaleString();
         });
 
-        // تنفيذ عملية التحميل برمجياً هنا
         document.getElementById('downloadButton').addEventListener('click', function(e) {
             e.preventDefault();
             
-            const apkUrl = "https://github.com/Nexauron-Studio/app-imam-mohamed-al-baqer/releases/download/1.1.0A/1.1.0A.apk";
-            const hasDownloaded = localStorage.getItem('baqir_app_downloaded_v1_0_7A');
+            const apkUrl = "https://github.com/Nexauron-Studio/app-imam-mohamed-al-baqer/releases/download/2.0.0H/2.0.0H.apk";
+            const hasDownloaded = localStorage.getItem('baqir_app_downloaded_v2_0_0H');
             
             if (!hasDownloaded) {
                 counterRef.set(firebase.database.ServerValue.increment(1))
                 .then(() => {
-                    localStorage.setItem('baqir_app_downloaded_v1_0_7A', 'true');
-                    window.location.assign(apkUrl); // توجيه برمجي
+                    localStorage.setItem('baqir_app_downloaded_v2_0_0H', 'true');
+                    window.location.assign(apkUrl);
                 })
                 .catch((error) => {
                     console.error("Firebase Error:", error);
-                    window.location.assign(apkUrl); // توجيه برمجي في حال الفشل
+                    window.location.assign(apkUrl);
                 });
             } else {
-                window.location.assign(apkUrl); // توجيه برمجي
+                window.location.assign(apkUrl);
             }
         });
     </script>
